@@ -29,7 +29,6 @@ class TestExtractSection:
         assert result is None
     
     
-    @pytest.mark.skip(reason="Case-insensitive matching not fully implemented in current regex patterns")
     def test_extract_section_case_insensitive(self):
         """Test that section extraction is case-insensitive."""
         content = r"\section{INTRODUCTION}" + "\nContent"
@@ -38,7 +37,6 @@ class TestExtractSection:
         assert result is not None
         assert "Content" in result
     
-    @pytest.mark.skip(reason="Special character handling in section names needs escaping improvement")
     def test_extract_section_with_special_chars(self):
         """Test extracting section with special characters in name."""
         content = r"\section{Problem Statement}" + "\nContent"

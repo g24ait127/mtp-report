@@ -16,7 +16,7 @@ import json
 def print_banner():
     """Print welcome banner."""
     print("\n" + "=" * 60)
-    print("🎓  IITJ MTP Template Generator (Simple Mode)")
+    print("IITJ MTP Template Generator (Simple Mode)")
     print("=" * 60)
     print("Note: This is the zero-dependency version with basic features.")
     print("For full features, install dependencies and use generate.py")
@@ -41,7 +41,7 @@ def get_user_input(prompt, default=None, required=True):
         elif not required:
             return ""
         else:
-            print("❌ This field is required. Please provide a value.")
+            print("[ERROR] This field is required. Please provide a value.")
 
 
 def collect_inputs():
@@ -66,7 +66,7 @@ def collect_inputs():
             project_type = 'presentation'
             break
         else:
-            print("❌ Invalid choice. Please enter 1, 2, or 3.")
+            print("[ERROR] Invalid choice. Please enter 1, 2, or 3.")
     
     print()
     
@@ -198,14 +198,14 @@ def generate_report(config, output_dir=None):
     # Get template type
     template_type = config['project']['type']
     
-    print(f"\n📝 Generating {template_type} report...")
+    print(f"\n[INFO] Generating {template_type} report...")
     print("   Processing template files...")
     
     # Copy and process files
     copy_and_process_files(template_type, config, output_dir, script_dir)
     
-    print(f"\n✅ Report generated successfully!")
-    print(f"📁 Output directory: {os.path.abspath(output_dir)}")
+    print(f"\n[OK] Report generated successfully!")
+    print(f"[INFO] Output directory: {os.path.abspath(output_dir)}")
     
     return output_dir
 
@@ -236,19 +236,19 @@ def main():
     # Get configuration
     if args.config:
         if not os.path.exists(args.config):
-            print(f"❌ Config file not found: {args.config}")
+            print(f"[ERROR] Config file not found: {args.config}")
             sys.exit(1)
         
         with open(args.config, 'r') as f:
             config = json.load(f)
-        print(f"✅ Loaded configuration from: {args.config}")
+        print(f"[OK] Loaded configuration from: {args.config}")
     else:
         # Interactive mode
         config = collect_inputs()
         
         # Confirm generation
         print("\n" + "=" * 60)
-        print("📋 Summary:")
+        print("[Outcome] Summary:")
         print(f"   Project: {config['project']['title']}")
         print(f"   Type: {config['project']['type']}")
         print(f"   Author: {config['author']['name']} ({config['author']['roll_number']})")
@@ -257,17 +257,17 @@ def main():
         
         confirm = input("\nGenerate report with these details? [Y/n]: ").strip().lower()
         if confirm and confirm != 'y':
-            print("❌ Generation cancelled.")
+            print("[ERROR] Generation cancelled.")
             sys.exit(0)
     
     # Generate report
     output_dir = generate_report(config, args.output)
     
     # Print next steps
-    print("\n⚠️  Important:")
+    print("\n[INFO] Important:")
     print("   This is a starter LaTeX project with placeholders ([TODO] / % TODO in .tex files).")
     print("   A PDF compiled before you replace that text shows layout only—not your final report.")
-    print("\n📚 Next steps:")
+    print("\n[INFO] Next steps:")
     print(f"   1. Edit the .tex files in {output_dir} to add your content")
     
     if config['project']['type'] == 'proposal':
@@ -277,7 +277,7 @@ def main():
     else:
         print(f"   2. Compile with: cd {output_dir} && pdflatex main.tex && bibtex main && pdflatex main.tex && pdflatex main.tex")
     
-    print("\n⚠️  Note: For advanced features (YAML config, better templating), use generate.py")
+    print("\n[INFO] Note: For advanced features (YAML config, better templating), use generate.py")
     print("   Install dependencies: pip install -r scripts/requirements.txt")
     print("\n")
 

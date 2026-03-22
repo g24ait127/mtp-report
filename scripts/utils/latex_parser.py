@@ -19,9 +19,13 @@ def extract_section(content: str, section_name: str) -> Optional[str]:
         Section content or None if not found
     """
     # Try to match section with various patterns
+    # Lookahead: next structural command, literal \end{document}, or end of string.
+    # Note: \end{...} must use \\end in the pattern or \e is parsed as ESC in regex.
+    _end_doc = r'\\end\{{document\}}'
+    _after = rf'(?=\\section|\\chapter|{_end_doc}|\Z)'
     patterns = [
-        rf'\\section\{{{section_name}\}}(.*?)(?=\\section|\\chapter|\\end{{document}})',
-        rf'\\section\{{.*?{section_name}.*?\}}(.*?)(?=\\section|\\chapter|\\end{{document}})',
+        rf'\\section\{{{section_name}\}}(.*?){_after}',
+        rf'\\section\{{.*?{section_name}.*?\}}(.*?){_after}',
     ]
     
     for pattern in patterns:
@@ -42,9 +46,10 @@ def extract_subsection(content: str, subsection_name: str) -> Optional[str]:
     Returns:
         Subsection content or None if not found
     """
+    _after_sub = r'(?=\\subsection|\\section|\\chapter|\Z)'
     patterns = [
-        rf'\\subsection\{{{subsection_name}\}}(.*?)(?=\\subsection|\\section|\\chapter)',
-        rf'\\subsection\{{.*?{subsection_name}.*?\}}(.*?)(?=\\subsection|\\section|\\chapter)',
+        rf'\\subsection\{{{subsection_name}\}}(.*?){_after_sub}',
+        rf'\\subsection\{{.*?{subsection_name}.*?\}}(.*?){_after_sub}',
     ]
     
     for pattern in patterns:
@@ -164,9 +169,11 @@ def extract_chapter(content: str, chapter_name: str) -> Optional[str]:
     Returns:
         Chapter content or None if not found
     """
+    _end_doc_ch = r'\\end\{{document\}}'
+    _after_ch = rf'(?=\\chapter|{_end_doc_ch}|\Z)'
     patterns = [
-        rf'\\chapter\{{{chapter_name}\}}(.*?)(?=\\chapter|\\end{{document}})',
-        rf'\\chapter\{{.*?{chapter_name}.*?\}}(.*?)(?=\\chapter|\\end{{document}})',
+        rf'\\chapter\{{{chapter_name}\}}(.*?){_after_ch}',
+        rf'\\chapter\{{.*?{chapter_name}.*?\}}(.*?){_after_ch}',
     ]
     
     for pattern in patterns:
