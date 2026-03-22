@@ -20,7 +20,7 @@ project:
 - **type** (string, required): Type of report
   - `"proposal"` - Research proposal or MTP1 report
   - `"major-project"` - Full thesis or major project report
-  - `"presentation"` - Beamer slides (Phase 2, not yet available)
+  - `"presentation"` - Beamer slides
 
 ### Author Information
 

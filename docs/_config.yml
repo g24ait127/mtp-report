@@ -7,6 +7,8 @@ show_downloads: true
 nav_links:
   - title: Home
     url: /
+  - title: Simple guide
+    url: /beginners_guide
   - title: Quick Start
     url: /quickstart
   - title: Documentation
@@ -54,6 +56,7 @@ kramdown:
 
 # Exclude from processing
 exclude:
+  - internal
   - Gemfile
   - Gemfile.lock
   - node_modules

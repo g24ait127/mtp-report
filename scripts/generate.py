@@ -406,6 +406,9 @@ Examples:
     output_dir = generate_report(config, args.output)
     
     # Print next steps
+    print("\n⚠️  Important:")
+    print("   This is a starter LaTeX project with placeholders ([TODO] / % TODO in .tex files).")
+    print("   A PDF compiled before you replace that text shows layout only—not your final report.")
     print("\n📚 Next steps:")
     print(f"   1. Edit the .tex files in {output_dir} to add your content")
     

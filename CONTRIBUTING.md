@@ -186,7 +186,7 @@ Contributors will be recognized in:
 
 If you have questions about contributing:
 
-- Check the [FAQ](docs/FAQ.md)
+- Check the [FAQ](docs/faq.md)
 - Open a discussion on GitHub
 - Review existing issues and PRs
 

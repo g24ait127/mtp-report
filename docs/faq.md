@@ -2,6 +2,16 @@
 
 Common questions and solutions for the IITJ MTP Template Generator.
 
+## Understanding the output
+
+### Q: Does the generator write my full report (abstract, chapters, acknowledgments, etc.)?
+
+**A:** No. It creates a **LaTeX project** with the right **structure** and your **metadata** (title, name, supervisor, dates, and similar fields from the config or prompts). Sections such as abstract, declaration, certificate, acknowledgments, and each chapter still contain **placeholders**—search for `[TODO]` and `% TODO` in the `.tex` files. **You** must add your real writing, figures, and bibliography entries.
+
+### Q: I compiled a PDF right after generating—why does it look like dummy or example text?
+
+**A:** That is expected until you replace every placeholder. Compiling produces a PDF from whatever is in the `.tex` files **right now**. Early on, that is mostly **template text**, so the PDF shows **correct layout** but not your finished work. Treat that as a **preview**; your **submission-ready** PDF is the same compile step **after** you have filled all sections.
+
 ## Installation and Setup
 
 ### Q: I get "python: command not found"
@@ -223,7 +233,7 @@ Row 2 & 30 & 40 \\
 
 ### Q: Can I add more chapters/sections?
 
-**A:** Yes! See the [Customization Guide](CUSTOMIZATION.md#adding-custom-sections).
+**A:** Yes! See the [Customization Guide](customization.md#adding-custom-sections).
 
 ## Customization
 
