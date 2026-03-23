@@ -59,17 +59,22 @@
 
 % Title page
 \input{titlePage.tex}
+\clearpage
+
+% Start pre-main text numbering (Roman): cover is counted but not printed
+\pagenumbering{roman}
+\setcounter{page}{2}
 
 % Declaration
 \BLOCK{if INCLUDE_DECLARATION}
-\newpage
 \input{declaration.tex}
+\newpage
 \BLOCK{endif}
 
 % Certificate
 \BLOCK{if INCLUDE_CERTIFICATE}
-\newpage
 \input{certificate.tex}
+\newpage
 \BLOCK{endif}
 
 % Acknowledgments
