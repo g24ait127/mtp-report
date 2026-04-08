@@ -666,11 +666,23 @@ class TestGenerateUserInputAndInteractive:
 
         mock_input.side_effect = [
             '2',
-            'Thesis', 'Auth', '9', '', 'Sup', '', '', '', '', '', 'Prof', 'Dept', 'Nov 2024',
+            'Thesis', 'Auth', '9', '', 'Sup', '', '', '', '', '', 'Prof', 'Dept', 'Nov 2024', '',
         ]
         cfg = collect_interactive_inputs()
         assert cfg['project']['type'] == 'major-project'
         assert cfg['academic']['supervisor_designation'] == 'Prof'
+        assert cfg['content']['include_glossary'] is True
+
+    @patch('builtins.input')
+    def test_collect_interactive_major_project_glossary_disabled(self, mock_input):
+        from scripts.generate import collect_interactive_inputs
+
+        mock_input.side_effect = [
+            '2',
+            'Thesis', 'Auth', '9', '', 'Sup', '', '', '', '', '', 'Prof', 'Dept', 'Nov 2024', 'n',
+        ]
+        cfg = collect_interactive_inputs()
+        assert cfg['content']['include_glossary'] is False
 
 
 class TestGeneratePresentationExtract:
@@ -849,11 +861,23 @@ class TestGenerateSimpleHelpers:
 
         mock_input.side_effect = [
             '2', 'T', 'A', '1', '', 'Dr', '', '', '', '', '', 'Nov',
-            'Prof', 'Dept',
+            'Prof', 'Dept', '',
         ]
         cfg = collect_inputs()
         assert cfg['project']['type'] == 'major-project'
         assert cfg['academic']['supervisor_designation'] == 'Prof'
+        assert cfg['content']['include_glossary'] is True
+
+    @patch('builtins.input')
+    def test_collect_inputs_major_project_glossary_disabled(self, mock_input):
+        from scripts.generate_simple import collect_inputs
+
+        mock_input.side_effect = [
+            '2', 'T', 'A', '1', '', 'Dr', '', '', '', '', '', 'Nov',
+            'Prof', 'Dept', 'n',
+        ]
+        cfg = collect_inputs()
+        assert cfg['content']['include_glossary'] is False
 
     @patch('builtins.input')
     def test_collect_inputs_presentation(self, mock_input):
