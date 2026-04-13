@@ -1,3 +1,18 @@
+# Testing
 pytest>=7.4.0
 pytest-cov>=4.1.0
 pytest-mock>=3.11.1
+
+# Formatting
+black>=24.0.0
+isort>=5.13.0
+
+# Linting
+flake8>=7.0.0
+pylint>=3.0.0
+
+# Type checking
+mypy>=1.8.0
+
+# Security scanning
+bandit>=1.7.7
