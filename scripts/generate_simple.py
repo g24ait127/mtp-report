@@ -11,6 +11,7 @@ import json
 import os
 import shutil
 import sys
+from typing import Any
 
 
 def print_banner():
@@ -69,7 +70,7 @@ def collect_inputs():
 
     print()
 
-    config = {
+    config: dict[str, Any] = {
         "project": {
             "title": get_user_input("Project title"),
             "type": project_type,
