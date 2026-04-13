@@ -47,7 +47,11 @@ env/
 *.out
 *.toc
 *.acn
+*.acr
+*.alg
 *.glo
+*.gls
+*.glg
 *.ist
 *.synctex.gz
 *.lof

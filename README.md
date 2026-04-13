@@ -128,8 +128,6 @@ pdflatex proposal.tex
 - [Content Extraction](docs/content_extraction.md) - Populate slides from existing reports
 - [Setup Checklist](docs/setup_checklist.md) - Verify prerequisites and tooling
 
-**Maintainers:** [Internal notes](docs/internal/README.md) (spec and backlog; not required for everyday use).
-
 ## 📁 Project Structure
 
 ```bash

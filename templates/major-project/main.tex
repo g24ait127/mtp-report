@@ -21,6 +21,9 @@
 \usepackage{times}
 \usepackage{amsmath}
 \usepackage[acronym]{glossaries}
+\usepackage{etoolbox}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
 
 % Page geometry
 \geometry{
@@ -33,15 +36,17 @@
 
 % Line spacing
 \setstretch{1.5}
+% \setlist{nosep, before=\setstretch{1.2}}
+\AtBeginEnvironment{verbatim}{\setstretch{1}}
+
+% Glossaries
+\makeglossaries
+\input{glossary}
 
 % Counter configuration
 \counterwithin{table}{section}
 \counterwithin{figure}{section}
 \numberwithin{equation}{section}
-
-% Glossaries
-\makeglossaries
-\input{glossary}
 
 % Date format
 \newdateformat{monthyeardate}{\monthname[\THEMONTH], \THEYEAR}

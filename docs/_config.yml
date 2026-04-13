@@ -58,7 +58,6 @@ kramdown:
 
 # Exclude from processing
 exclude:
-  - internal
   - Gemfile
   - Gemfile.lock
   - node_modules
