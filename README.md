@@ -276,4 +276,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
+trigger rebuild
+
 -- **Made with ❤️ for students and researchers** --
