@@ -1,0 +1,24 @@
+PLACEHOLDER FOR UNIVERSITY LOGO
+
+This file serves as a placeholder for your university logo.
+
+TO USE YOUR LOGO:
+1. Replace this file with your university logo image
+2. Name it: logo.png (or logo.jpg)
+3. Recommended size: 300x300 pixels minimum
+4. Supported formats: PNG, JPG, PDF
+
+ALTERNATIVE:
+You can specify a custom logo path in your config.yaml:
+
+assets:
+  logo_path: "./path/to/your/logo.png"
+
+Or use the --logo flag when generating:
+python scripts/generate.py --config config.yaml --logo path/to/logo.png
+
+If you don't have a logo, you can:
+- Use a simple university seal or emblem
+- Create a text-based logo
+- Comment out the logo line in titlePage.tex:
+  % \includegraphics[width=0.3\textwidth]{logo.png}
